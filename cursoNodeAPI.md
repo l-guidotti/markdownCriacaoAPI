@@ -13,8 +13,10 @@ Esse MarkDown foi criado para documentar códigos, bibliotecas e o que for inter
 - [yarn - Instalando o yarn](#yarn)
 - [express - instalando o express](#express)
 - [insomia - instalando o insomnia](#insomnia)
+- [nodemon - instalando o nodemon](#nodemon)
 - [eslint - Padronizando código](#eslint)
 - [criando uma api](#api)
+- [package.json](#package.json)
 
   
   
@@ -79,13 +81,32 @@ cmd
 
 yarn add express
 ```
-
+Isso criará uma nova dependência dentro do [package.json](#package.json)
   [Voltar ao topo](#sumário)
   
-  ## insomania
+## insomnia
   O  **Insomnia**  é uma  **ferramenta de desenvolvimento de API e cliente REST**  criada pela Kong. Ele foi projetado para simplificar o processo de construção e teste de APIs, tornando-o mais eficiente e produtivo para desenvolvedores. O Insomnia facilita o teste e a experimentação de APIs, sendo amigável o suficiente para qualquer pessoa começar a utilizá-lo.
  Poderá ser instalado pelo site:
   https://insomnia.rest/
+
+## nodemon
+Biblioteca que faz o servidor atualizar automaticamente. Para 
+
+```markdown
+cmd
+
+yarn add nodemon -D
+```
+Esse comando instalará a biblioteca dentro do projeto e criará uma nova dependencia dentro do arquivo [package.json](#package.json) que foi criado quando inicializamos o projeto [api](#api).
+Para rodar o nodemon digite o seguinte código:
+
+```markdown
+cmd
+
+nodemon index.js
+```
+****O index.js foi utilizado como exemplo.**
+Para 
 
 ## eslint
 
@@ -109,7 +130,7 @@ cmd
 
 yarn init -y
 ```
-Dentro do VScode será criada uma pasta com um arquivo package.json que será onde todas as informações e dependências das bibliotecas serão utilizadas no projeto, no início não é necessário fazer nenhuma alteração nesse arquivo. 
+Dentro do VScode será criada uma pasta com um arquivo [package.json](#package.json) que será onde todas as informações e dependências das bibliotecas serão utilizadas no projeto, no início não é necessário fazer nenhuma alteração nesse arquivo. 
 Após isso volte ao cmd e digite o seguinte para instalar o express nas dependências do projeto: [express - instalando o express](#express)
 
 ```markdown
@@ -119,3 +140,59 @@ const express = required('express');
 ```
 
 [Voltar ao topo](#sumário)
+
+## package.json
+Arquivo inicial:
+```markdown
+json
+
+{
+"name": "taskList",
+"packageManager": "yarn@4.7.0",
+}
+```
+Dependência criada pelo express:
+```markdown
+json
+
+{
+"name": "taskList",
+"packageManager": "yarn@4.7.0",
+"dependencies": {
+"express": "^4.21.2"
+}
+```
+Dependência criada pelo nodemon:
+json
+
+```markdown
+json
+{
+"name": "taskList",
+"packageManager": "yarn@4.7.0",
+"dependencies": {
+"express": "^4.21.2"
+},
+
+"devDependencies": {
+"nodemon": "^3.1.9",
+"sucrase": "^3.35.0"
+}
+```
+Criando um script para rodar o nodem automaticamente:
+```markdown
+json
+{
+"name": "taskList",
+"packageManager": "yarn@4.7.0",
+"scripts" :{
+	"dev": "nodemon.index.js"
+},
+"dependencies": {
+"express": "^4.21.2"
+},
+"devDependencies": {
+"nodemon": "^3.1.9",
+"sucrase": "^3.35.0"
+}
+```
