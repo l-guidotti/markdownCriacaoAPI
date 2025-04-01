@@ -14,6 +14,7 @@ Esse MarkDown foi criado para documentar códigos, bibliotecas e o que for inter
 - [express - instalando o express](#express)
 - [insomia - instalando o insomnia](#insomnia)
 - [nodemon - instalando o nodemon](#nodemon)
+- [sucrase - instalando o sucrase](#sucrase)
 - [eslint - Padronizando código](#eslint)
 - [criando uma api](#api)
 - [package.json](#package.json)
@@ -82,12 +83,15 @@ cmd
 yarn add express
 ```
 Isso criará uma nova dependência dentro do [package.json](#package.json)
+
   [Voltar ao topo](#sumário)
   
 ## insomnia
   O  **Insomnia**  é uma  **ferramenta de desenvolvimento de API e cliente REST**  criada pela Kong. Ele foi projetado para simplificar o processo de construção e teste de APIs, tornando-o mais eficiente e produtivo para desenvolvedores. O Insomnia facilita o teste e a experimentação de APIs, sendo amigável o suficiente para qualquer pessoa começar a utilizá-lo.
  Poderá ser instalado pelo site:
   https://insomnia.rest/
+
+[Voltar ao topo](#sumário)
 
 ## nodemon
 Biblioteca que faz o servidor atualizar automaticamente. Para 
@@ -103,10 +107,58 @@ Para rodar o nodemon digite o seguinte código:
 ```markdown
 cmd
 
-nodemon index.js
+nodemon [index.js]
 ```
 ****O index.js foi utilizado como exemplo.**
-Para 
+Para
+
+[Voltar ao topo](#sumário)
+
+## sucrase
+É uma biblioteca que auxilia sintaxe de importação do express
+
+```markdown
+cmd
+
+yarn add sucrase -D
+```
+A sintaxe de importação a ser utilizada no arquivo.js será a seguinte:
+```markdown
+javascript
+
+import express from 'express';
+```
+
+
+Para simplificar a sintaxe de rodar o servidor pelo cmd deverá ser criado dentro do diretório do projeto um arquivo **nodemon.json** e dentro do arquivo irá o seguinte script:
+```markdown
+json
+
+{
+	"execMap": {
+		"js": "node -r sucrase/register"
+	}
+}
+```
+
+**Importante!**
+Caso não haja um "scripts" dentro do arquivo [package.json](#package.json), você deverá criar esse arquivo da seguinte forma:
+```markdown
+json
+
+"scripts": {
+	"dev": "nodemon [/index.js]";
+},
+```
+Depois de ter feito esse processo, quando for iniciar o servidor pelo `cmd` basta digitar o seguinte código para a inicialização:
+
+```markdown
+cmd
+
+yarn dev
+```
+
+[Voltar ao topo](#sumário)
 
 ## eslint
 
@@ -196,3 +248,5 @@ json
 "sucrase": "^3.35.0"
 }
 ```
+
+[Voltar ao topo](#sumário)
